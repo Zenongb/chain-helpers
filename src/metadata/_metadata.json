@@ -1,0 +1,622 @@
+[
+  {
+    "name": "ChainHelpers #1",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/1.png",
+    "dna": "7a2bdcd9852fe3144165931848bda63da24ae2bd",
+    "edition": 1,
+    "date": 1638197817209,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth mint"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Mint human"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #2",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/2.png",
+    "dna": "5c1d08f0cb5a1534e5b1e7bbbeaa3696154d52f2",
+    "edition": 2,
+    "date": 1638197820700,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth mint"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon narrow"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #3",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/3.png",
+    "dna": "48042729a565043444d11d3bbf795031e5def7fe",
+    "edition": 3,
+    "date": 1638197824509,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gradient grey"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater orange"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth mint"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Rainbow beak"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Big alien"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #4",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/4.png",
+    "dna": "0927123632c91b2e07774c4cce8819ec94617f9b",
+    "edition": 4,
+    "date": 1638197826305,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Red grid"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Grunge violet"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth lightblue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Keys"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #5",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/5.png",
+    "dna": "0c1ab04e9509c7f602d4da3af8626cfb943e4759",
+    "edition": 5,
+    "date": 1638197829573,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gradient gum"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Spectral black"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Keys"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #6",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/6.png",
+    "dna": "ec30ac4b643e9f3dc3e31e7c799d763197bf1f98",
+    "edition": 6,
+    "date": 1638197832858,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gradient gum"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Spectral black"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #7",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/7.png",
+    "dna": "ddccf33d111df73cb95795c84b1dccbb472bf4a8",
+    "edition": 7,
+    "date": 1638197836330,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Grunge violet"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Spiky blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Mint human"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #8",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/8.png",
+    "dna": "c421c8c2772b8862b5e3776e3d131b1de7c1fc2c",
+    "edition": 8,
+    "date": 1638197840171,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gradient grey"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Grunge violet"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth lightblue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #9",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/9.png",
+    "dna": "e8f0d3a6211ad7b4447950f9f86012c96cde1d32",
+    "edition": 9,
+    "date": 1638197843897,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater orange"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth mint"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #10",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/10.png",
+    "dna": "eaa135bba871d39fd0a3574b56ede6158a26d3ae",
+    "edition": 10,
+    "date": 1638197845599,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Grunge violet"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth yellow"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #11",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/11.png",
+    "dna": "01381e247943f4d80c09d025d19225aa8557f69e",
+    "edition": 11,
+    "date": 1638197847279,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Mint"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater orange"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth lightblue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bubblegum"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Big alien"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #12",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/12.png",
+    "dna": "0a1614c6f2a6cdf3470234a1543634c10ea51bf0",
+    "edition": 12,
+    "date": 1638197848812,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth yellow"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Keys"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #13",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/13.png",
+    "dna": "2fa0c1f351d150eae19decc31a33705f154998d4",
+    "edition": 13,
+    "date": 1638197852541,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater orange"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth lightblue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #14",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/14.png",
+    "dna": "6c1099a676f85acf3aeaf10142cf36306c4cc1de",
+    "edition": 14,
+    "date": 1638197854199,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater orange"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth mint"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Keys"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Mint human"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #15",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/15.png",
+    "dna": "d259792e89704743dd18ffca61c21d8a5256a162",
+    "edition": 15,
+    "date": 1638197858151,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gradient grey"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater stripes"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth mint"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #16",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/16.png",
+    "dna": "d04b2e2c32c0cf0aa09a0e0ce32d7e6fb3d202ea",
+    "edition": 16,
+    "date": 1638197861733,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gradient grey"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth lightblue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #17",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/17.png",
+    "dna": "f83865cffbc112a4fa68ab2c4b6a2cecc57c1a60",
+    "edition": 17,
+    "date": 1638197863364,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Red grid"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Smooth yellow"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bubblegum"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #18",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/18.png",
+    "dna": "c943fb3591d3f2966f737e34a3771be3c26c05a9",
+    "edition": 18,
+    "date": 1638197865090,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Mint"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater stripes"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Rainbow ruin"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Big alien"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #19",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/19.png",
+    "dna": "fa7109db78e4c8a513be535d1857d64153eb1bf1",
+    "edition": 19,
+    "date": 1638197866792,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Sweater stripes"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Spectral black"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cartoon smile"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Cartoon"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "ChainHelpers #20",
+    "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+    "image": "ipfs://NewUriToReplace/20.png",
+    "dna": "82a457f8e8c1bf37b3b4b26f3ad09aaf5e528b23",
+    "edition": 20,
+    "date": 1638197868377,
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Body",
+        "value": "Shirt black"
+      },
+      {
+        "trait_type": "Head",
+        "value": "Rainbow ruin"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Keys"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Big alien"
+      }
+    ],
+    "compiler": "HashLips Art Engine"
+  }
+]

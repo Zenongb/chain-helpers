@@ -1,0 +1,31 @@
+{
+  "name": "ChainHelpers #7",
+  "description": "An NFT that shares it's revenue with NGOs to distribute the wealth",
+  "image": "ipfs://NewUriToReplace/7.png",
+  "dna": "ddccf33d111df73cb95795c84b1dccbb472bf4a8",
+  "edition": 7,
+  "date": 1638197836330,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Violet"
+    },
+    {
+      "trait_type": "Body",
+      "value": "Grunge violet"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Spiky blue"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Cartoon smile"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Mint human"
+    }
+  ],
+  "compiler": "HashLips Art Engine"
+}
