@@ -1,0 +1,36 @@
+{
+  "Head": [
+    "Smooth mint",
+    "Smooth lightblue",
+    "Spectral black",
+    "Spiky blue",
+    "Smooth yellow",
+    "Rainbow ruin"
+  ],
+  "Body": [
+    "Shirt black",
+    "Sweater orange",
+    "Grunge violet",
+    "Sweater stripes"
+  ],
+  "Eyes": [
+    "Mint human",
+    "Cartoon narrow",
+    "Big alien",
+    "Cartoon"
+  ],
+  "Mouth": [
+    "Cartoon smile",
+    "Rainbow beak",
+    "Keys",
+    "Bubblegum"
+  ],
+  "Background": [
+    "Violet",
+    "Gradient grey",
+    "Red grid",
+    "Gradient gum",
+    "Yellow",
+    "Mint"
+  ]
+}

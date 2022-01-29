@@ -1,3 +1,4 @@
+
 header {
   display: flex;
   justify-content: space-between;
@@ -6,13 +7,13 @@ header > h1 {
   display: block;
 }
 .header-selector {
-
   display: block;
   flex-direction: row;
   justify-content: center
 }
 
 body {
+  font-family: 'Poppins', sans-serif;
   padding: 0px;
   margin: 0px;
 }
@@ -21,4 +22,32 @@ main {  /* bloque principal */
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+}
+
+/* selector styles */
+.attrib-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.attrib-selector > h2 {
+  margin: 0px;
+}
+
+/* item styles */
+.item {
+  border: 1px solid darkgrey;
+  border-radius: 4px;
+}
+.item > img {
+  height: 200px;
+  width: 200px;
+}
+.item-data {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.item-name {
+  font-size: 1em;
 }

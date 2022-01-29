@@ -4,9 +4,16 @@
     <meta charset="utf-8">
     <title>An NFT marketplace</title>
     <link rel="stylesheet" href="styles/main.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
+      <!-- Cabecera, tendra los botones de login, y conexión de wallet
+         y boton de elección entre light y dark mode-->
       <h1>ChainHelpers</h1>
       <div class="header-selector">
         <button type="button" name="button" id='theme'>Light</button>
@@ -14,13 +21,48 @@
       </div>
     </header>
       <main>
-        <div class="sidebar">
-
+        <!-- Bloque principal-->
+        <div class="sidebar" id="asset-selector">
+          <div class="attrib-selector">
+            <h2>Head</h2>
+            <div class="attrib">
+              <input type="checkbox" name="rainbow-ruin" value="">
+              <label>Rainbow ruin</label>
+            </div>
+            <div class="attrib">
+              <input type="checkbox" name="smooth-lightblue" value="">
+              <label>Smooth lightblue</label>
+            </div>
+            <div class="attrib">
+              <input type="checkbox" name="smooth-mint" value="">
+              <label>Smooth mint</label>
+            </div>
+            <div class="attrib">
+              <input type="checkbox" name="smooth-yellow" value="">
+              <label>Smooth yellow</label>
+            </div>
+            <div class="attrib">
+              <input type="checkbox" name="smooth-lightblue" value="">
+              <label>Smooth lightblue</label>
+            </div>
+            <div class="attrib">
+              <input type="checkbox" name="smooth-lightblue" value="">
+              <label>Smooth lightblue</label>
+            </div>
+          </div>
         </div>
         <div class="mostrador">
-
+        <!-- Bloque que contiene las imagenes -->
+          <div class="item" id="1">
+            <!-- bloque plantilla, placeholder para testear formas-->
+            <img src="assets/images/10.png" alt="">
+            <div class="item-data">
+              <p class="item-name">ChainHelper #10</p>
+              <p>price</p>
+            </div>
+          </div>
         </div>
-        <div class="user-selector">
+        <div class="sidebar" id="user-selector">
 
         </div>
       </main>
