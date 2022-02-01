@@ -2,8 +2,9 @@
   --item-border-size: 1px;
   --item-margin: 2px;
   --img-size: 200px;
-  --item-width: calc(var(--item-border-size) + var(--item-margin) + var(--img-size))
+  --item-width: calc(var(--item-border-size) + var(--item-margin) + var(--img-size));
 }
+
 header {
   display: flex;
   justify-content: space-between;
@@ -27,6 +28,9 @@ main {  /* bloque principal */
 	display: flex;
 	flex-direction: row;
 	justify-content:space-between;
+}
+.padding-bar {
+  width: 0.8%;
 }
 
 /* selector styles */
@@ -55,6 +59,7 @@ main {  /* bloque principal */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* item styles */
