@@ -67,6 +67,7 @@ main {  /* bloque principal */
   border: var(--item-border-size) solid darkgrey;
   border-radius: 4px;
   margin: var(--item-margin);
+  height: 275px;
 }
 .item > img {
   height: var(--img-size);

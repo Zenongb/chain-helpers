@@ -146,6 +146,21 @@ const filter = (attribsToFilter) => {
   return matchingIds
 }
 
+const naiveFilter = () => {
+  let matchedIds = filter(filterPrompt())
+  console.log(`Las id de los NFTs que matchean tú busqueda son: ${matchedIds.join(', ')}`)
+  display.innerHTML = ''
+  if (matchedIds.length > 0) {
+    for (id of matchedIds) {
+      display.append(assetDisplay(id))
+    }
+  } else {
+    display.append(createDOMElement('p', null, 'There are no matching NFTs for your query'))
+  }
+
+}
+
+
 // #############################################################################
 // #############################################################################
 // ################### BLOQUE DE ESTRUCTURADO DEL DOM ##########################
@@ -227,16 +242,15 @@ const formatToValue = (attrib) => {
 
 //signIn()
 
-// let toFilter = filterPrompt()
-// let matchedIds = filter(toFilter)
-// console.log(`Las id de los NFTs que matchean tú busqueda son: ${matchedIds.join(', ')}`)
-
 const selectorSidebar = document.getElementById('asset-selector')
 for (part in ATTRIBUTES) {
   selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))
 }
 
+// display es variable global, llamada en la funcion naiveFilter
 const display = document.getElementById('display')
 for (asset of SMALL_METADATA) {
   display.append(assetDisplay(asset.id))
 }
+
+naiveFilter()
