@@ -1,4 +1,9 @@
-
+:root {
+  --item-border-size: 1px;
+  --item-margin: 2px;
+  --img-size: 200px;
+  --item-width: calc(var(--item-border-size) + var(--item-margin) + var(--img-size))
+}
 header {
   display: flex;
   justify-content: space-between;
@@ -21,10 +26,16 @@ body {
 main {  /* bloque principal */
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content:space-between;
 }
 
 /* selector styles */
+#asset-selector {
+  padding: 7px;
+  position: sticky;
+  top: 0;
+  align-self: flex-start; /* corrector para que funcione el position sticky */
+}
 .attrib-selector {
   display: flex;
   flex-direction: column;
@@ -33,15 +44,28 @@ main {  /* bloque principal */
 .attrib-selector > h2 {
   margin: 0px;
 }
+.attrib {
+  padding-left: 5px;
+}
+
+
+/* display styles */
+#display {
+  width: calc(var(--item-width) * 5 + 15px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 /* item styles */
 .item {
-  border: 1px solid darkgrey;
+  border: var(--item-border-size) solid darkgrey;
   border-radius: 4px;
+  margin: var(--item-margin);
 }
 .item > img {
-  height: 200px;
-  width: 200px;
+  height: var(--img-size);
+  width: var(--img-size);
 }
 .item-data {
   padding: 5px;

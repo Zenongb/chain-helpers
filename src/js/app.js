@@ -117,7 +117,7 @@ const filterPrompt = () => {
 }
 
 const parseChoices = (part, choicesStr) => {
-  // función interna que  vincula el promt del usuario y devuelve el atributo
+  // función interna que  vincula el prompt del usuario y devuelve el atributo
   // correspondiente
   let output = []
   let choicesArr = choicesStr.split(',')
@@ -154,8 +154,68 @@ const filter = (attribsToFilter) => {
 
 
 // #############################################################################
-// #################### SIDEBAR ################################################
+// #################### SELECTOR DE ATRIBUTOS ##################################
 // #############################################################################
+
+const attribSelector = (name, attribs) => {
+  // funcion que genera los bloques de atributos a partir de los datos dados por
+  // el objeto ATTRIBUTES
+  let wrapper = createDOMElement('div', { class: 'attrib-selector' })
+  let title = createDOMElement('h2', null, name)
+  wrapper.append(title)
+  for (attrName of attribs) {
+    let innerDiv = createDOMElement('div', { class: 'attrib' })
+    innerDiv.append(createDOMElement('input', {
+      type: 'checkbox',
+      name: formatToValue(attrName),
+      value: formatToValue(attrName)
+    }))
+    innerDiv.append(createDOMElement('label', { for: formatToValue(attrName) }, attrName))
+    wrapper.append(innerDiv)
+  }
+  return wrapper
+}
+
+// #############################################################################
+// #################### MOSTRADOR ##############################################
+// ############################################################################
+
+const assetDisplay = (id) => {
+  let wrapper = createDOMElement('div', { id: id, class: 'item' })
+  wrapper.append(createDOMElement('img', {
+    src: `../assets/images/${id}.png`,
+    alt: `ChainHelper number ${id}`
+  }))
+  let assetData = createDOMElement('div', { class: 'item-data' })
+  assetData.append(createDOMElement('p', { class: 'item-name' }, `ChainHelper #${id}`))
+  assetData.append(createDOMElement('p', null, 'price'))
+  wrapper.append(assetData)
+  return wrapper
+}
+
+// #############################################################################
+// #################### FUNCIONES GENERICAS ####################################
+// #############################################################################
+
+const createDOMElement = (tag, domAttribs = null, innerHTML = null) => {
+  // funcion interna que genera elementos dom, recibe un str refiriendo al tag,
+  // un objeto con el formato { atributoDOM: valor, ... } y un str en el caso de
+  // que se desee darle texto al atributo
+  let el = document.createElement(tag)
+  if (domAttribs) {
+    for (attr in domAttribs) {
+      el.setAttribute(attr, domAttribs[attr])
+    }
+  }
+  if (innerHTML) { el.innerHTML = innerHTML }
+  return el
+}
+
+const formatToValue = (attrib) => {
+  // funcion que retorna el nombre del atributo formateado en minúscula y con
+  // guiones por espacios para usar en texto html
+  return attrib.toLowerCase().replace(' ', '-')
+}
 
 
 // #############################################################################
@@ -167,6 +227,16 @@ const filter = (attribsToFilter) => {
 
 //signIn()
 
-let toFilter = filterPrompt()
-let matchedIds = filter(toFilter)
-console.log(`Las id de los NFTs que matchean tú busqueda son: ${matchedIds.join(', ')}`)
+// let toFilter = filterPrompt()
+// let matchedIds = filter(toFilter)
+// console.log(`Las id de los NFTs que matchean tú busqueda son: ${matchedIds.join(', ')}`)
+
+const selectorSidebar = document.getElementById('asset-selector')
+for (part in ATTRIBUTES) {
+  selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))
+}
+
+const display = document.getElementById('display')
+for (asset of SMALL_METADATA) {
+  display.append(assetDisplay(asset.id))
+}
