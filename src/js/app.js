@@ -49,51 +49,19 @@ const verifyPassword = (pass1, pass2) => {
 // #############################################################################
 
 
-const filterPrompt = () => {
-  // función que promtea al usuario para que elija los atributos por los que
-  // quiere realizar la búsqueda, devuelve un objeto con la forma:
-  // {
-  //  parte: [attr1, attr2, ..., attrN],
-  //  ...
-  //  parteN: [attr1, attr2, ..., attrN]
-  // }
-  let selection = {}
-  alert('Filtrar NFTs por partes, no es necesario que sigas la capitalización.\nSi no querés filtrar por esa parte específica, apretá enter')
-  for (part in ATTRIBUTES) {
-    let promptMsg = `Estás eligiendo los atributos de la parte ${part}, las opciones son:\n  --${ATTRIBUTES[part].join('\n  --')}\nSi querés buscar más de un atributo, separálos por comas`
-    let choice = prompt(promptMsg)
-    if (choice !== '') {
-      let parsedChoices = parseChoices(part, choice)
-      console.log(parsedChoices.join(', '))
-      if (parsedChoices.length > 0) { selection[part] = parsedChoices }
-    }
-  }
-  return selection
-}
-
-const parseChoices = (part, choicesStr) => {
-  // función interna que  vincula el prompt del usuario y devuelve el atributo
-  // correspondiente
-  let output = []
-  let choicesArr = choicesStr.split(',')
-  for (attr of choicesArr) {
-    let cleanedAttr = ATTRIBUTES[part].find(a => a.toLowerCase() === attr.trim().toLowerCase())
-    if (cleanedAttr) { output.push(cleanedAttr) }
-  }
-  return output
-}
-
-const filter = (attribsToFilter) => {
+const filter = () => {
   // funcion que busca los assets declarados en la constante SMALL_METADATA para
   // encontrar si un asset tiene todos los atributos que se desean encontrar
   let matchingIds = []
   SMALL_METADATA.forEach((asset) => {
     let hasThem = false
-    for (part in attribsToFilter) {
-      if (attribsToFilter[part].indexOf(asset.attribs[part]) >= 0) { hasThem = true }
-      else {
-        hasThem = false
-        break
+    for (part in FILTER) {
+      if (FILTER[part].length > 0) {
+        if (FILTER[part].indexOf(asset.attribs[part]) >= 0) { hasThem = true }
+        else {
+          hasThem = false
+          break
+        }
       }
     }
     if (hasThem) { matchingIds.push(asset.id) }
@@ -101,8 +69,45 @@ const filter = (attribsToFilter) => {
   return matchingIds
 }
 
-const naiveFilter = () => {
-  let matchedIds = filter(filterPrompt())
+
+const modifyFilter = (htmlFormattedAttrib, add) => {
+  // funcion que recive el attributo desde el valor del checkbox y si el
+  // esta activado o no
+  for (part in ATTRIBUTES) {
+    let cleanAttrib = ATTRIBUTES[part].find(e => e.toLowerCase() === htmlFormattedAttrib.replace('-', ' '))
+    if (cleanAttrib) {
+      if (add) { FILTER[part].push(cleanAttrib) }
+      else { FILTER[part] = FILTER[part].filter(attr => attr !== cleanAttrib) }
+      break
+    }
+  }
+}
+
+const filterIsEmpty = () => {
+  let empty = false
+  for (part in FILTER) {
+    if (FILTER[part].length === 0) { empty = true }
+    else { empty = false; break }
+  }
+  return empty
+}
+
+
+// #############################################################################
+// #############################################################################
+// ################### BLOQUE DE ESTRUCTURADO DEL DOM ##########################
+// #############################################################################
+// #############################################################################
+
+
+// #############################################################################
+// #############################################################################
+// #############################################################################
+
+const filterAndDisplay = () => {
+  // función que llama a la funcion de filtrado y después renderiza los assets
+  // en caso de que haya, caso contrario renderiza un mensaje al usuario
+  let matchedIds = filter()
   console.log(`Las id de los NFTs que matchean tú busqueda son: ${matchedIds.join(', ')}`)
   display.innerHTML = ''
   if (matchedIds.length > 0) {
@@ -112,15 +117,14 @@ const naiveFilter = () => {
   } else {
     display.append(createDOMElement('p', null, 'There are no matching NFTs for your query'))
   }
-
 }
 
-
-// #############################################################################
-// #############################################################################
-// ################### BLOQUE DE ESTRUCTURADO DEL DOM ##########################
-// #############################################################################
-// #############################################################################
+const displayAll = () => {
+  display.innerHTML = ''
+  for (asset of SMALL_METADATA) {
+    display.append(assetDisplay(asset.id))
+  }
+}
 
 
 // #############################################################################
@@ -135,11 +139,14 @@ const attribSelector = (name, attribs) => {
   wrapper.append(title)
   for (attrName of attribs) {
     let innerDiv = createDOMElement('div', { class: 'attrib' })
-    innerDiv.append(createDOMElement('input', {
+    let checkBox = createDOMElement('input', {
       type: 'checkbox',
       name: formatToValue(attrName),
+      id: formatToValue(attrName),
       value: formatToValue(attrName)
-    }))
+    })
+    checkBox.addEventListener('change', function() { filterEvent(checkBox) })
+    innerDiv.append(checkBox)
     innerDiv.append(createDOMElement('label', { for: formatToValue(attrName) }, attrName))
     wrapper.append(innerDiv)
   }
@@ -158,7 +165,7 @@ const assetDisplay = (id) => {
   }))
   let assetData = createDOMElement('div', { class: 'item-data' })
   assetData.append(createDOMElement('p', { class: 'item-name' }, `ChainHelper #${id}`))
-  assetData.append(createDOMElement('p', null, 'price'))
+  assetData.append(createDOMElement('p', null, '0.05'))
   wrapper.append(assetData)
   return wrapper
 }
@@ -190,12 +197,26 @@ const formatToValue = (attrib) => {
 
 // #############################################################################
 // #############################################################################
+// ##################   FUNCIONES DE EVENTOS   #################################
+// #############################################################################
+// #############################################################################
+
+
+const filterEvent = (element) => {
+  console.log(element.checked)
+  modifyFilter(element.value, element.checked)
+  if (!filterIsEmpty()) { filterAndDisplay() }
+  else { displayAll() }
+}
+
+
+
+// #############################################################################
+// #############################################################################
 // ############  BLOQUE DE EJECUCIÓN  ##########################################
 // #############################################################################
 // #############################################################################
 
-
-//signIn()
 
 const selectorSidebar = document.getElementById('asset-selector')
 for (part in ATTRIBUTES) {
@@ -204,8 +225,4 @@ for (part in ATTRIBUTES) {
 
 // display es variable global, llamada en la funcion naiveFilter
 const display = document.getElementById('display')
-for (asset of SMALL_METADATA) {
-  display.append(assetDisplay(asset.id))
-}
-
-naiveFilter()
+displayAll()

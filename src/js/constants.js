@@ -41,3 +41,12 @@ const ATTRIBUTES = { // obj conteniendo los distintos atrribs y sus valoers; uti
     "Mint"
   ]
 }
+
+// Objeto usado para guardar los atributos a filtrar
+const FILTER = {
+  Head: [],
+  Body: [],
+  Eyes: [],
+  Mouth: [],
+  Background: [],
+}
