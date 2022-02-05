@@ -135,8 +135,10 @@ const attribSelector = (name, attribs) => {
   // funcion que genera los bloques de atributos a partir de los datos dados por
   // el objeto ATTRIBUTES
   let wrapper = createDOMElement('div', { class: 'attrib-selector' })
-  let title = createDOMElement('h2', null, name)
-  wrapper.append(title)
+  let partTrigger = createDOMElement('div', { class: 'attrib-trigger' }, `<h2>${name}</h2>`)
+  partTrigger.addEventListener('click', function() { changeSelectorDisplay(attribBlock) })
+  wrapper.append(partTrigger)
+  let attribBlock = createDOMElement('div', { style: 'display: none' })
   for (attrName of attribs) {
     let innerDiv = createDOMElement('div', { class: 'attrib' })
     let checkBox = createDOMElement('input', {
@@ -148,8 +150,9 @@ const attribSelector = (name, attribs) => {
     checkBox.addEventListener('change', function() { filterEvent(checkBox) })
     innerDiv.append(checkBox)
     innerDiv.append(createDOMElement('label', { for: formatToValue(attrName) }, attrName))
-    wrapper.append(innerDiv)
+    attribBlock.append(innerDiv)
   }
+  wrapper.append(attribBlock)
   return wrapper
 }
 
@@ -207,6 +210,15 @@ const filterEvent = (element) => {
   modifyFilter(element.value, element.checked)
   if (!filterIsEmpty()) { filterAndDisplay() }
   else { displayAll() }
+}
+
+const changeSelectorDisplay = (element) => {
+  console.log('change selector triggered')
+  if (element.style.display === 'none') {
+    element.style.display = 'block'
+  } else {
+    element.style.display = 'none'
+  }
 }
 
 

@@ -45,7 +45,10 @@ main {  /* bloque principal */
   flex-direction: column;
   justify-content: center;
 }
-.attrib-selector > h2 {
+.attrib-trigger {
+  display: block;
+}
+.attrib-trigger > h2 {
   margin: 0px;
 }
 .attrib {
