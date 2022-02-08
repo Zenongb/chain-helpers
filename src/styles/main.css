@@ -5,6 +5,12 @@
   --item-width: calc(var(--item-border-size) + var(--item-margin) + var(--img-size));
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -15,14 +21,31 @@ header > h1 {
 .header-selector {
   display: block;
   flex-direction: row;
-  justify-content: center
+  justify-content: space-between;
+  margin: 7px;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  padding: 0px;
-  margin: 0px;
+.header-selector > img {
+  width: 36px;
+  height: 36px;
 }
+.user-login {
+  position: absolute;
+  right: 6px;
+  border: 1px solid darkgrey;
+  background-color: white;
+  border-radius: 5px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+.user-login > * {
+  margin: 6px
+}
+.user-login > button {
+  width: 60px;
+}
+
 
 main {  /* bloque principal */
 	display: flex;

@@ -17,7 +17,6 @@ const signIn = () => {
   do {
     user = prompt('Nombre de usuario')
   } while (user === '')
-
   let verified = undefined
   do {
     if (!verified && verified !== undefined) { alert('Hubo un error en la verificación, volvé a intentar') }
@@ -32,14 +31,12 @@ const signIn = () => {
 const verifyPassword = (pass1, pass2) => {
   if (pass1.length < 8) { return false }
   else if (pass1 !== pass2) { return false }
-
   let lowerCase = false
   let upperCase = false
   for (l of pass1.split('')) {
     if (l === l.toUpperCase()) { upperCase = true }
     else if (l === l.toLowerCase()) { lowerCase = true }
   }
-
   if (lowerCase && upperCase) { return true }
   else { return false }
 }
@@ -100,6 +97,27 @@ const filterIsEmpty = () => {
 // #############################################################################
 
 
+const userLogIn = () => {
+  let wrapper = createDOMElement('div', { class: 'user-login' }, '<h4>You are not logged in..</h4>')
+  let user = createDOMElement('input', {
+    type: 'text',
+    name: 'login',
+    placeholder: 'Username'
+  })
+  wrapper.append(user)
+  let pass = createDOMElement('input', {
+    type: 'password',
+    name: 'login',
+    placeholder: 'Password'
+  })
+  wrapper.append(pass)
+  let logInBtn = createDOMElement('button', { type: 'button', name: 'login' }, 'Log in')
+  logInBtn.addEventListener('click', function() { logIn(user, pass) })
+  wrapper.append(logInBtn)
+  wrapper.append(createDOMElement('p', null, `Not signed in? <a href="#">Sign in here!</a>`))
+  return wrapper
+}
+
 // #############################################################################
 // #############################################################################
 // #############################################################################
@@ -158,7 +176,7 @@ const attribSelector = (name, attribs) => {
 
 // #############################################################################
 // #################### MOSTRADOR ##############################################
-// ############################################################################
+// #############################################################################
 
 const assetDisplay = (id) => {
   let wrapper = createDOMElement('div', { id: id, class: 'item' })
@@ -221,7 +239,24 @@ const changeSelectorDisplay = (element) => {
   }
 }
 
+const logIn = (userEl, passEl) => {
+  // falta verificar identidad del user
+  user = {
+    name: userEl.value,
+    loggedIn: true
+  }
+  console.log(`hola ${user.name}, tu contrasenia es ${passEl.value}`)
 
+}
+
+const userClick = () => {
+  if (!user.loggedIn && !userDisplay.innerHTML) {
+    userDisplay.append(userLogIn())
+  } else if (userDisplay.innerHTML) {
+    userDisplay.innerHTML = ''
+  }
+  // falta un elif más para mosstrar las caracteristicas del usuario
+}
 
 // #############################################################################
 // #############################################################################
@@ -229,12 +264,18 @@ const changeSelectorDisplay = (element) => {
 // #############################################################################
 // #############################################################################
 
+var user = {
+  loggedIn: false
+}
+const userDisplay = document.getElementById('user-display')
 
 const selectorSidebar = document.getElementById('asset-selector')
 for (part in ATTRIBUTES) {
   selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))
 }
 
+const userBtn = document.getElementById('user')
+userBtn.addEventListener('click', function() { userClick() })
 // display es variable global, llamada en la funcion naiveFilter
 const display = document.getElementById('display')
 displayAll()
