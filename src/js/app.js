@@ -28,18 +28,6 @@ const signIn = () => {
   return user
 }
 
-const verifyPassword = (pass1, pass2) => {
-  if (pass1.length < 8) { return false }
-  else if (pass1 !== pass2) { return false }
-  let lowerCase = false
-  let upperCase = false
-  for (l of pass1.split('')) {
-    if (l === l.toUpperCase()) { upperCase = true }
-    else if (l === l.toLowerCase()) { lowerCase = true }
-  }
-  if (lowerCase && upperCase) { return true }
-  else { return false }
-}
 
 // #############################################################################
 // ###################  LÓGICA DE FILTRADO POR ATRIBUTOS #######################
@@ -101,19 +89,19 @@ const userLogIn = () => {
   let wrapper = createDOMElement('div', { class: 'user-login' }, '<h4>You are not logged in..</h4>')
   let user = createDOMElement('input', {
     type: 'text',
-    name: 'login',
+    name: 'user',
     placeholder: 'Username'
   })
-  wrapper.append(user)
   let pass = createDOMElement('input', {
     type: 'password',
-    name: 'login',
+    name: 'pass',
     placeholder: 'Password'
   })
-  wrapper.append(pass)
-  let logInBtn = createDOMElement('button', { type: 'button', name: 'login' }, 'Log in')
+  let logInBtn = createDOMElement('button', { type: 'submit', value: 'submit' }, 'Log in')
   logInBtn.addEventListener('click', function() { logIn(user, pass) })
-  wrapper.append(logInBtn)
+  let form = createDOMElement('form')
+  form.append(user, pass, logInBtn)
+  wrapper.append(form)
   wrapper.append(createDOMElement('p', null, `Not signed in? <a href="#">Sign in here!</a>`))
   return wrapper
 }
@@ -155,7 +143,6 @@ const attribSelector = (name, attribs) => {
   let wrapper = createDOMElement('div', { class: 'attrib-selector' })
   let partTrigger = createDOMElement('div', { class: 'attrib-trigger' }, `<h2>${name}</h2>`)
   partTrigger.addEventListener('click', function() { changeSelectorDisplay(attribBlock) })
-  wrapper.append(partTrigger)
   let attribBlock = createDOMElement('div', { style: 'display: none' })
   for (attrName of attribs) {
     let innerDiv = createDOMElement('div', { class: 'attrib' })
@@ -166,11 +153,10 @@ const attribSelector = (name, attribs) => {
       value: formatToValue(attrName)
     })
     checkBox.addEventListener('change', function() { filterEvent(checkBox) })
-    innerDiv.append(checkBox)
-    innerDiv.append(createDOMElement('label', { for: formatToValue(attrName) }, attrName))
+    innerDiv.append(checkBox, createDOMElement('label', { for: formatToValue(attrName) }, attrName))
     attribBlock.append(innerDiv)
   }
-  wrapper.append(attribBlock)
+  wrapper.append(partTrigger, attribBlock)
   return wrapper
 }
 
