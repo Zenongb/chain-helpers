@@ -1,89 +1,12 @@
 // #############################################################################
 // #############################################################################
-// ############################# BLOQUE DE LÓGICA DEL PROGRAMA #################
-// #############################################################################
-// #############################################################################
-
-
-// #############################################################################
-// ################### INICIO DE SESIÓN ########################################
+// ###################   BLOQUE DE FUNCIONES DE RENDERIZADO   ##################
+// ##################################   DEL DOM   ##############################
 // #############################################################################
 
-
-// Bloque de funciones dedicadas al inicio de sesión y autenticación de usuario
-// contrasenia
-const signIn = () => {
-  let user = ''
-  do {
-    user = prompt('Nombre de usuario')
-  } while (user === '')
-  let verified = undefined
-  do {
-    if (!verified && verified !== undefined) { alert('Hubo un error en la verificación, volvé a intentar') }
-    let password = prompt('Ingresa tu contrasenia, \nla contrasenia debe tener por lo menos 8 caracteres \ny por lo menos una letra mayúscula y una minúscula')
-    let password2 = prompt('Volve a ingresar contrasenia, recordá que: \nla contrasenia debe tener por lo menos 8 caracteres \ny por lo menos una letra mayúscula y una minúscula')
-    verified = verifyPassword(password, password2)
-  } while (!verified)
-  alert(`Usuario y contrasenia verificadas. Hola ${user}`)
-  return user
-}
-
-
 // #############################################################################
-// ###################  LÓGICA DE FILTRADO POR ATRIBUTOS #######################
+// ####################   RENDERIZADO DE INTERFAZ DE USUARIO   #################
 // #############################################################################
-
-
-const filter = () => {
-  // funcion que busca los assets declarados en la constante SMALL_METADATA para
-  // encontrar si un asset tiene todos los atributos que se desean encontrar
-  let matchingIds = []
-  SMALL_METADATA.forEach((asset) => {
-    let hasThem = false
-    for (part in FILTER) {
-      if (FILTER[part].length > 0) {
-        if (FILTER[part].indexOf(asset.attribs[part]) >= 0) { hasThem = true }
-        else {
-          hasThem = false
-          break
-        }
-      }
-    }
-    if (hasThem) { matchingIds.push(asset.id) }
-  });
-  return matchingIds
-}
-
-
-const modifyFilter = (htmlFormattedAttrib, add) => {
-  // funcion que recive el attributo desde el valor del checkbox y si el
-  // esta activado o no
-  for (part in ATTRIBUTES) {
-    let cleanAttrib = ATTRIBUTES[part].find(e => e.toLowerCase() === htmlFormattedAttrib.replace('-', ' '))
-    if (cleanAttrib) {
-      if (add) { FILTER[part].push(cleanAttrib) }
-      else { FILTER[part] = FILTER[part].filter(attr => attr !== cleanAttrib) }
-      break
-    }
-  }
-}
-
-const filterIsEmpty = () => {
-  let empty = false
-  for (part in FILTER) {
-    if (FILTER[part].length === 0) { empty = true }
-    else { empty = false; break }
-  }
-  return empty
-}
-
-
-// #############################################################################
-// #############################################################################
-// ################### BLOQUE DE ESTRUCTURADO DEL DOM ##########################
-// #############################################################################
-// #############################################################################
-
 
 const userLogIn = () => {
   let wrapper = createDOMElement('div', { class: 'user-login' }, '<h4>You are not logged in..</h4>')
@@ -101,13 +24,12 @@ const userLogIn = () => {
   logInBtn.addEventListener('click', function() { logIn(user, pass) })
   let form = createDOMElement('form')
   form.append(user, pass, logInBtn)
-  wrapper.append(form)
-  wrapper.append(createDOMElement('p', null, `Not signed in? <a href="#">Sign in here!</a>`))
+  wrapper.append(form, createDOMElement('p', null, `Not signed in? <a href="#">Sign in here!</a>`))
   return wrapper
 }
 
 // #############################################################################
-// #############################################################################
+// #################   RENDERIZADO POR FILTRADO   ##############################
 // #############################################################################
 
 const filterAndDisplay = () => {
@@ -134,7 +56,7 @@ const displayAll = () => {
 
 
 // #############################################################################
-// #################### SELECTOR DE ATRIBUTOS ##################################
+// ############## RENDERIZADO DE INTERFAZ DE FILTRO POR ATRIBUTOS ##############
 // #############################################################################
 
 const attribSelector = (name, attribs) => {
@@ -161,7 +83,7 @@ const attribSelector = (name, attribs) => {
 }
 
 // #############################################################################
-// #################### MOSTRADOR ##############################################
+// ####################   RENDERIZADO DE TARJETAS DE NFTS   ####################
 // #############################################################################
 
 const assetDisplay = (id) => {
@@ -179,7 +101,7 @@ const assetDisplay = (id) => {
 }
 
 // #############################################################################
-// #################### FUNCIONES GENERICAS ####################################
+// ###############   FUNCIONES GENERICAS  DE RENDERIZADO   #####################
 // #############################################################################
 
 const createDOMElement = (tag, domAttribs = null, innerHTML = null) => {
@@ -210,13 +132,6 @@ const formatToValue = (attrib) => {
 // #############################################################################
 
 
-const filterEvent = (element) => {
-  console.log(element.checked)
-  modifyFilter(element.value, element.checked)
-  if (!filterIsEmpty()) { filterAndDisplay() }
-  else { displayAll() }
-}
-
 const changeSelectorDisplay = (element) => {
   console.log('change selector triggered')
   if (element.style.display === 'none') {
@@ -245,24 +160,81 @@ const userClick = () => {
   // falta un elif más para mosstrar las caracteristicas del usuario
 }
 
+const filterEvent = (element) => {
+  console.log(element.checked)
+  modifyFilter(element.value, element.checked)
+  if (!filterIsEmpty()) { filterAndDisplay() }
+  else { displayAll() }
+}
+
+
+// #############################################################################
+// ###################   LÓGICA DE FILTRADO POR ATRIBUTOS   ####################
+// #############################################################################
+
+const filter = () => {
+  // funcion que busca los assets declarados en la constante SMALL_METADATA para
+  // encontrar si un asset tiene todos los atributos que se desean encontrar
+  let matchingIds = []
+  SMALL_METADATA.forEach((asset) => {
+    let hasThem = false
+    for (part in FILTER) {
+      if (FILTER[part].length > 0) {
+        if (FILTER[part].indexOf(asset.attribs[part]) >= 0) { hasThem = true }
+        else {
+          hasThem = false
+          break
+        }
+      }
+    }
+    if (hasThem) { matchingIds.push(asset.id) }
+  });
+  return matchingIds
+}
+
+const modifyFilter = (htmlFormattedAttrib, add) => {
+  // funcion que recive el attributo desde el valor del checkbox y si el
+  // esta activado o no
+  for (part in ATTRIBUTES) {
+    let cleanAttrib = ATTRIBUTES[part].find(e => e.toLowerCase() === htmlFormattedAttrib.replace('-', ' '))
+    if (cleanAttrib) {
+      if (add) { FILTER[part].push(cleanAttrib) }
+      else { FILTER[part] = FILTER[part].filter(attr => attr !== cleanAttrib) }
+      break
+    }
+  }
+}
+
+const filterIsEmpty = () => {
+  let empty = false
+  for (part in FILTER) {
+    if (FILTER[part].length === 0) { empty = true }
+    else { empty = false; break }
+  }
+  return empty
+}
+
+
+
 // #############################################################################
 // #############################################################################
 // ############  BLOQUE DE EJECUCIÓN  ##########################################
 // #############################################################################
 // #############################################################################
 
+// #########   VARIABLES GLOBALES   #########
 var user = {
+  name: '',
   loggedIn: false
 }
 const userDisplay = document.getElementById('user-display')
-
 const selectorSidebar = document.getElementById('asset-selector')
+const userBtn = document.getElementById('user')
+const display = document.getElementById('display')
+
 for (part in ATTRIBUTES) {
   selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))
 }
 
-const userBtn = document.getElementById('user')
 userBtn.addEventListener('click', function() { userClick() })
-// display es variable global, llamada en la funcion naiveFilter
-const display = document.getElementById('display')
 displayAll()
