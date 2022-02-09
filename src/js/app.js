@@ -172,7 +172,8 @@ const assetDisplay = (id) => {
   }))
   let assetData = createDOMElement('div', { class: 'item-data' })
   assetData.append(createDOMElement('p', { class: 'item-name' }, `ChainHelper #${id}`))
-  assetData.append(createDOMElement('p', null, '0.05'))
+  assetData.append(createDOMElement('p', null, 'ETH 0.05'))
+  assetData.append(createDOMElement('img', { src: 'img/hearth_empty.png' }))
   wrapper.append(assetData)
   return wrapper
 }
