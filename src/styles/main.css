@@ -35,15 +35,18 @@ header > h1 {
   border: 1px solid darkgrey;
   background-color: white;
   border-radius: 5px;
-  width: 250px;
   display: flex;
   flex-direction: column;
 }
 .user-login > * {
   margin: 6px
 }
-.user-login > button {
-  width: 60px;
+.user-login > form {
+  display: flex;
+  flex-direction: column;
+}
+.user-login > form > * {
+  margin-top: 6px;
 }
 
 
@@ -94,6 +97,7 @@ main {  /* bloque principal */
   border-radius: 4px;
   margin: var(--item-margin);
   height: 275px;
+  width: var(--img-size);
 }
 .item > img {
   height: var(--img-size);
@@ -103,6 +107,15 @@ main {  /* bloque principal */
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+.item-data > img {
+  width: 20px;
+  height: 20px;
+
+}
+.item-data > * {
+  margin: 0px;
 }
 .item-name {
   font-size: 1em;

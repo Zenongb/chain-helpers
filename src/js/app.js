@@ -24,7 +24,7 @@ const userLogIn = () => {
   logInBtn.addEventListener('click', function() { logIn(user, pass) })
   let form = createDOMElement('form')
   form.append(user, pass, logInBtn)
-  wrapper.append(form, createDOMElement('p', null, `Not signed in? <a href="#">Sign in here!</a>`))
+  wrapper.append(form, createDOMElement('p', null, `Not signed in? <a href="signIn.html">Sign in here!</a>`))
   return wrapper
 }
 
