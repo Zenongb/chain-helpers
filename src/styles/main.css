@@ -112,11 +112,35 @@ main {  /* bloque principal */
 .item-data > img {
   width: 20px;
   height: 20px;
-
 }
 .item-data > * {
   margin: 0px;
 }
 .item-name {
   font-size: 1em;
+}
+
+#page-selector-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.page-selector-display {
+  display: flex;
+  flex-direction: row;
+}
+.page-selector-display > *{
+  height: 28px;
+}
+.center-container {
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+}
+.center-container > * {
+  margin: 5px;
+}
+.center-container > input {
+  width: 3em;
+  height: 1em;
 }

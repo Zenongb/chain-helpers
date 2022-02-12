@@ -5,8 +5,47 @@
 // #############################################################################
 
 // #############################################################################
+// ####################   RENDERIZADO DE SELECTOR DE PAGINAS   #################
+// #############################################################################
+
+// arregalr el formato de actualizacion de los valores de agarrado del site
+// o comabiar el formato para modificar la forma en la ue se reciben los valores
+// del contexto.
+const pageSelector = () => {
+  let wrapper = createDOMElement('div', { class: 'page-selector-display' })
+
+  // declaración de variable global
+  centerContainer = createDOMElement('div', { class: 'center-container' })
+  makeCenterContainer()
+
+  let prev = createDOMElement('p', { class: 'page-selector' }, '< Prev')
+  let next = createDOMElement('p', { class: 'page-selector' }, 'Next >')
+
+  prev.addEventListener('click', function() { changePage('prev') })
+  next.addEventListener('click', function() { changePage('next') })
+  wrapper.append(prev, centerContainer, next)
+  return wrapper
+}
+
+const makeCenterContainer = () => {
+  let pageInput = createDOMElement('input', {
+    class: 'page-selector',
+    type: 'number',
+    min: 1,
+    max: idsToRender.length
+  })
+  pageInput.value = 1
+  let pageText = createDOMElement('p', null, `/ ${Math.ceil(idsToRender.length / 20)}`)
+  pageInput.addEventListener('change', function() { changePage(pageInput.value) })
+
+  centerContainer.innerHTML = ''
+  centerContainer.append(pageInput, pageText)
+}
+
+// #############################################################################
 // ####################   RENDERIZADO DE INTERFAZ DE USUARIO   #################
 // #############################################################################
+
 
 const userLogIn = () => {
   let wrapper = createDOMElement('div', { class: 'user-login' }, '<h4>You are not logged in..</h4>')
@@ -18,7 +57,7 @@ const userLogIn = () => {
   let pass = createDOMElement('input', {
     type: 'password',
     name: 'pass',
-    placeholder: 'Password'
+    placeholder: 'Password',
   })
   let logInBtn = createDOMElement('button', { type: 'submit', value: 'submit' }, 'Log in')
   logInBtn.addEventListener('click', function() { logIn(user, pass) })
@@ -37,20 +76,29 @@ const filterAndDisplay = () => {
   // en caso de que haya, caso contrario renderiza un mensaje al usuario
   let matchedIds = filter()
   console.log(`Las id de los NFTs que matchean tú busqueda son: ${matchedIds.join(', ')}`)
-  display.innerHTML = ''
   if (matchedIds.length > 0) {
-    for (id of matchedIds) {
-      display.append(assetDisplay(id))
-    }
+    idsToRender = matchedIds
+    // makeCenterContainer()
+    currentPage = 1
+    displayPage()
   } else {
+    display.innerHTML = ''
     display.append(createDOMElement('p', null, 'There are no matching NFTs for your query'))
   }
 }
 
-const displayAll = () => {
+const displayPage = () => {
+  // console.log(currentPage)
+  // console.log(`start ${currentPage * 20 - 20} end ${currentPage * 20}`)
   display.innerHTML = ''
-  for (asset of SMALL_METADATA) {
-    display.append(assetDisplay(asset.id))
+  let pageIds = idsToRender.filter(
+    (id, index) => {
+      if (currentPage * 20 - 20 <= index && index < currentPage * 20) { /* console.log(`index ${index} id ${id}`);*/ return id }
+    }
+  )
+  // console.log(pageIds)
+  for (id of pageIds) {
+    display.append(assetDisplay(id))
   }
 }
 
@@ -64,7 +112,7 @@ const attribSelector = (name, attribs) => {
   // el objeto ATTRIBUTES
   let wrapper = createDOMElement('div', { class: 'attrib-selector' })
   let partTrigger = createDOMElement('div', { class: 'attrib-trigger' }, `<h2>${name}</h2>`)
-  partTrigger.addEventListener('click', function() { changeSelectorDisplay(attribBlock) })
+  partTrigger.addEventListener('click', function() { dropdownMenu(attribBlock) })
   let attribBlock = createDOMElement('div', { style: 'display: none' })
   for (attrName of attribs) {
     let innerDiv = createDOMElement('div', { class: 'attrib' })
@@ -131,8 +179,23 @@ const formatToValue = (attrib) => {
 // #############################################################################
 // #############################################################################
 
+const changePage = (page) => {
+  console.log(page)
+  if (page === 'prev' && currentPage > 1) {
+    console.log('first')
+    currentPage--
+  } else if (page === 'next' && currentPage < Math.ceil(idsToRender.length / 20)) {
+    console.log('second')
+    currentPage++
+  } else if (!isNaN(Number(page))) {
+    console.log('third')
+    currentPage = Number(page)
+  }
+  displayPage()
+}
 
-const changeSelectorDisplay = (element) => {
+
+const dropdownMenu = (element) => {
   console.log('change selector triggered')
   if (element.style.display === 'none') {
     element.style.display = 'block'
@@ -163,8 +226,15 @@ const userClick = () => {
 const filterEvent = (element) => {
   console.log(element.checked)
   modifyFilter(element.value, element.checked)
-  if (!filterIsEmpty()) { filterAndDisplay() }
-  else { displayAll() }
+  if (!filterIsEmpty()) {
+    if (idsToRender.length === SMALL_METADATA.length) { globalPage = currentPage }
+    filterAndDisplay()
+  }
+  else {
+    resetIdsToRender()
+    displayPage()
+  }
+  makeCenterContainer()
 }
 
 
@@ -214,7 +284,15 @@ const filterIsEmpty = () => {
   return empty
 }
 
+// #############################################################################
+// #####################   LÓGICA DE PÁGINAS   #################################
+// #############################################################################
 
+const resetIdsToRender = () => {
+  currentPage = globalPage
+  idsToRender = []
+  SMALL_METADATA.forEach(item => { idsToRender.push(item.id) })
+}
 
 // #############################################################################
 // #############################################################################
@@ -223,18 +301,32 @@ const filterIsEmpty = () => {
 // #############################################################################
 
 // #########   VARIABLES GLOBALES   #########
+
 var user = {
   name: '',
-  loggedIn: false
+  loggedIn: false,
+  likedNFTs: []
 }
+var currentPage = 1
+var globalPage = currentPage
+var idsToRender = []
+resetIdsToRender()
+
 const userDisplay = document.getElementById('user-display')
 const selectorSidebar = document.getElementById('asset-selector')
 const userBtn = document.getElementById('user')
 const display = document.getElementById('display')
+const pageSelectorContainer = document.getElementById('page-selector-container')
+// variable declarada acá para hacerla global, declarada inicialmente en
+// page selector en línea 332, utilizada para el renderizado de la cantidad de
+// paginas en la funcion makeCenterContainer
+var centerContainer
 
+// ##########   EJECUCIÓN DEL RENDERIZADO INICIAL   ##########
 for (part in ATTRIBUTES) {
   selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))
 }
 
 userBtn.addEventListener('click', function() { userClick() })
-displayAll()
+pageSelectorContainer.append(pageSelector())
+displayPage()
