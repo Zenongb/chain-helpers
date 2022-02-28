@@ -110,6 +110,17 @@ const attribSelector = (name, attribs) => {
   wrapper.append(partTrigger, attribBlock)
   return wrapper
 }
+// #############################################################################
+// ####################   RENDERIZADO DE ATRIBUTOS SELECCIONADOS   #############
+// #############################################################################
+
+const selectedAttrib = (attrib) => {
+  let wrapper = createDOMElement('div', { class: 'selected-attrib', id: `selected-${attrib}` }, capitalize(attrib))
+  wrapper.value = attrib
+  wrapper.addEventListener('click', function() { filterEvent(wrapper) })
+  return wrapper
+}
+
 
 // #############################################################################
 // ####################   RENDERIZADO DE TARJETAS DE NFTS   ####################
@@ -166,6 +177,7 @@ const selectorSidebar = document.getElementById('asset-selector')
 const userBtn = document.getElementById('user')
 const display = document.getElementById('display')
 const pageSelectorContainer = document.getElementById('page-selector-container')
+const attribDisplay = document.getElementById('attrib-display')
 
 for (part in ATTRIBUTES) {
   selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))

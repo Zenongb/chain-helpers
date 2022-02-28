@@ -41,8 +41,16 @@ const userClick = () => {
 }
 
 const filterEvent = (element) => {
-  console.log(element.checked)
-  modifyFilter(element.value, element.checked)
+  console.log(element.value)
+  let bool = typeof element.checked === 'boolean' ? element.checked : false
+  showToast(capitalize(element.value), bool)
+  modifyFilter(element.value, bool)
+  if (bool) {
+    attribDisplay.append(selectedAttrib(element.value))
+  } else {
+    document.getElementById(`selected-${element.value}`).remove()
+    document.getElementById(element.value).checked = false
+  }
   if (!filterIsEmpty()) {
     globalPage = idsToRender.length === SMALL_METADATA.length ? currentPage : globalPage
     filterAndDisplay()
@@ -53,7 +61,6 @@ const filterEvent = (element) => {
   }
   makeCenterContainer()
 }
-
 
 const filterAndDisplay = () => {
   // función que llama a la funcion de filtrado y después renderiza los assets
@@ -69,6 +76,10 @@ const filterAndDisplay = () => {
     display.append(createDOMElement('p', null, 'There are no matching NFTs for your query'))
   }
 }
+
+const capitalize = (str) =>
+  str.replace('-', ' ').replace(/(?:^|\s|["'([{])+\S/g, match => match.toUpperCase());
+
 // #############################################################################
 // ###################   LÓGICA DE FILTRADO POR ATRIBUTOS   ####################
 // #############################################################################
@@ -120,6 +131,20 @@ const resetIdsToRender = () => {
   currentPage = globalPage
   idsToRender = []
   SMALL_METADATA.forEach(item => { idsToRender.push(item.id) })
+}
+
+// #############################################################################
+// #####################   IMPLEMENTACION DE TOASTIFY   ########################
+// #############################################################################
+
+const showToast = (attrib, add) => {
+  let text = add ? `Added ${attrib} to filter` : `Removed ${attrib} of filter`
+  Toastify({
+    text: text,
+    duration: 1500,
+    gravity: "top",
+    position: 'center'
+  }).showToast()
 }
 
 // #############################################################################
