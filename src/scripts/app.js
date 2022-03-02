@@ -152,15 +152,3 @@ const showToast = (attrib, add) => {
 // ############  BLOQUE DE EJECUCIÓN  ##########################################
 // #############################################################################
 // #############################################################################
-
-// #########   VARIABLES GLOBALES   #########
-
-var user = {
-  name: '',
-  loggedIn: false,
-  likedNFTs: []
-}
-var currentPage = 1
-var globalPage = currentPage
-var idsToRender = []
-resetIdsToRender()

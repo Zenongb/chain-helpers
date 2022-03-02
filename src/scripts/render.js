@@ -168,21 +168,8 @@ const formatToValue = (attrib) => {
 // ####################   EJECUCIÓN DEL RENDERIZADO INICIAL   ##################
 // #############################################################################
 
-// variable declarada de forma global; asignada en la función makeCenterContainer
-// al contenedor del selector de las páginas
-var centerContainer
-
-const userDisplay = document.getElementById('user-display')
-const selectorSidebar = document.getElementById('asset-selector')
-const userBtn = document.getElementById('user')
-const display = document.getElementById('display')
-const pageSelectorContainer = document.getElementById('page-selector-container')
-const attribDisplay = document.getElementById('attrib-display')
-
-for (part in ATTRIBUTES) {
-  selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))
+const renderAttribs = () => {
+  for (part in ATTRIBUTES) {
+    selectorSidebar.append(attribSelector(part, ATTRIBUTES[part]))
+  }
 }
-
-userBtn.addEventListener('click', function() { userClick() })
-pageSelectorContainer.append(pageSelector())
-displayPage()
