@@ -29,10 +29,10 @@ async function init() {
   resetIdsToRender()
   renderAttribs()
   displayPage()
+  pageSelectorContainer.append(pageSelector())
 }
 
 
 init()
 
 userBtn.addEventListener('click', function() { userClick() })
-pageSelectorContainer.append(pageSelector())
